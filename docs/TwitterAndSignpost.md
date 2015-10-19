@@ -10,16 +10,15 @@ You can get a consumer key and secret for your Twitter application [here](http:/
                 "exQ94pBpLXFcyttvLoxU2nrktThrlsj580zjYzmoM");
 
         OAuthProvider provider = new DefaultOAuthProvider(
-                "http://twitter.com/oauth/request_token",
-                "http://twitter.com/oauth/access_token",
-                "http://twitter.com/oauth/authorize");
+                "https://api.twitter.com/oauth/request_token",
+                "https://api.twitter.com/oauth/access_token",
+                "https://api.twitter.com/oauth/authorize");
 
         /****************************************************
          * The following steps should only be performed ONCE
          ***************************************************/
 
-        // we do not support callbacks, thus pass OOB
-        String authUrl = provider.retrieveRequestToken(consumer, OAuth.OUT_OF_BAND);
+        String authUrl = provider.retrieveRequestToken(consumer, "http://localhost:8080/callback");
 
         // bring the user to authUrl, e.g. open a web browser and note the PIN code
         // ...         
